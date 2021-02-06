@@ -1,0 +1,45 @@
+{
+  "name": "ts-project-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "run-script-os",
+    "build:linux": "rm -rf ./dist && npx ttsc --build tsconfig.json",
+    "build:darwin:linux": "rm -rf ./dist && npx ttsc --build tsconfig.json",
+    "build:win32": "del /S /F /Q dist && npx ttsc --build tsconfig.json",
+    "eslint": "npx eslint --config eslintrc.json './src/**/*.ts'",
+    "start": "node ./dist/index.js",
+    "test": "npx jest"
+  },
+  "author": "Peera Yoodee",
+  "license": "ISC",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "typescript-transform-paths": "^2.2.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.22",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "eslint": "^7.19.0",
+    "jest": "^26.6.3",
+    "run-script-os": "^1.1.5",
+    "ts-jest": "^26.5.0",
+    "ttypescript": "^1.5.12",
+    "typescript": "^4.1.3"
+  },
+  "nodemonConfig": {
+    "verbose": false,
+    "ext": "ts",
+    "ignore": [
+      "./dist/**"
+    ],
+    "exec": "npm run-script build && npm start"
+  }
+}
